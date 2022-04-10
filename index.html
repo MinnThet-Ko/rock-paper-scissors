@@ -15,14 +15,14 @@
 
                 //If the selections are the same
                 if(playerSelection === computerSelection){
-                    console.log("It is a draw!");
+                    alert("It is a draw!");
                 }
 
                 //If the player's selection wins
                 if(playerSelection === "Rock" && computerSelection === "Scissors" ||
                     playerSelection === "Paper" && computerSelection === "Rock" ||
                     playerSelection === "Scissors" && computerSelection === "Paper"){
-                        console.log(`You win! ${playerSelection} beats ${computerSelection}!`);
+                        alert(`You win! ${playerSelection} beats ${computerSelection}!`);
                         totalPoints++;
                 } 
 
@@ -30,7 +30,7 @@
                 if(playerSelection === "Rock" && computerSelection === "Paper" ||
                     playerSelection === "Paper" && computerSelection === "Scissors" ||
                     playerSelection === "Scissors" && computerSelection === "Rock"){
-                        console.log(`You lose! ${computerSelection} beats ${playerSelection}!`);
+                        alert(`You lose! ${computerSelection} beats ${playerSelection}!`);
                 }
                 return totalPoints;
              }
@@ -47,7 +47,12 @@
                     computerSelection = computerPlay();
                     totalPoints = playRound(playerSelection, computerSelection, totalPoints);
                  }
-                 console.log(`Your total points are ${totalPoints}.`);
+                 if(totalPoints == 1){
+                    alert(`You got ${totalPoints} point.`);
+                 }else {
+                    alert(`You got ${totalPoints} points.`);
+                 }
+                 
              }
              game();
         </script>
