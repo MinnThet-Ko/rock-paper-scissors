@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Rock-Paper-Scissors</title>
+        <meta charset="utf-8"/>
+        <script>
+             function computerPlay(){
+                let resultList = ["Rock","Paper","Scissors"];
+                
+                //return a random value from the list
+                return resultList[Math.floor(Math.random()*3)];
+             }
+
+             function playRound(playerSelection, computerSelection, totalPoints){
+
+                //If the selections are the same
+                if(playerSelection === computerSelection){
+                    console.log("It is a draw!");
+                }
+
+                //If the player's selection wins
+                if(playerSelection === "Rock" && computerSelection === "Scissors" ||
+                    playerSelection === "Paper" && computerSelection === "Rock" ||
+                    playerSelection === "Scissors" && computerSelection === "Paper"){
+                        console.log(`You win! ${playerSelection} beats ${computerSelection}!`);
+                        totalPoints++;
+                } 
+
+                //If the computer's selection wins
+                if(playerSelection === "Rock" && computerSelection === "Paper" ||
+                    playerSelection === "Paper" && computerSelection === "Scissors" ||
+                    playerSelection === "Scissors" && computerSelection === "Rock"){
+                        console.log(`You lose! ${computerSelection} beats ${playerSelection}!`);
+                }
+                return totalPoints;
+             }
+
+             function captalize(inputString){
+                 captalizedLetter = inputString[0].toUpperCase();
+                 return captalizedLetter+inputString.slice(1);
+             }
+
+             function game(){
+                 let totalPoints = 0
+                 for(let i=0;i<5;i++){
+                    playerSelection = captalize(prompt("Choose rock, paper or scissors.").toLowerCase());
+                    computerSelection = computerPlay();
+                    totalPoints = playRound(playerSelection, computerSelection, totalPoints);
+                 }
+                 console.log(`Your total points are ${totalPoints}.`);
+             }
+             game();
+        </script>
+    </head>
+    <body>
+
+    </body>
+</html>
