@@ -1,0 +1,42 @@
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#computer-side, 
+#player-side {
+    align-self: center;
+    height: 250px;
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    margin: 20px;
+}
+
+#computer-button-container,
+#player-button-container{
+    align-self: center;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+input {
+    height: 200px;
+    width: 200px;
+    border: 1px solid black;
+}
+
+#result, #score {
+    margin: 10px;
+    font-size: 20px;
+    font-weight: bold;
+}
+

@@ -1,42 +1,50 @@
-//declare total points
-let totalPoints = 0;
 //this part is for game logic
+
+//declare total points and rounds
+let playerPoints = 0;
+let computerPoints = 0;
+
+//function for computer selection
 function computerPlay() {
-    let resultList = ["Rock", "Paper", "Scissors"];
+    let resultList = ["rock", "paper", "scissors"];
 
     //return a random value from the list
     return resultList[Math.floor(Math.random() * 3)];
 }
 
-function playRound(playerSelection, computerSelection) {
 
-    console.log(playerSelection);
-    console.log(computerSelection);
-    console.log(document.getElementById("result").id);
+//the fuction to decide who is the winner in a round
+function playRound(playerSelection, computerSelection) {
+    
     //If the selections are the same
     if (playerSelection === computerSelection) {
-        alert("It is a draw!");
+        document.getElementById("result").textContent="It's a draw!";
     }
 
     //If the player's selection wins
-    if (playerSelection === "Rock" && computerSelection === "Scissors" ||
-        playerSelection === "Paper" && computerSelection === "Rock" ||
-        playerSelection === "Scissors" && computerSelection === "Paper") {
-        alert(`You win! ${playerSelection} beats ${computerSelection}!`);
+    if (playerSelection === "rock" && computerSelection === "scissors" ||
+        playerSelection === "paper" && computerSelection === "rock" ||
+        playerSelection === "scissors" && computerSelection === "paper") {
         document.getElementById("result").textContent=`You win! ${playerSelection} beats ${computerSelection}!`;
-        totalPoints++;
+        playerPoints++;
     }
 
     //If the computer's selection wins
-    if (playerSelection === "Rock" && computerSelection === "Paper" ||
-        playerSelection === "Paper" && computerSelection === "Scissors" ||
-        playerSelection === "Scissors" && computerSelection === "Rock") {
-        alert(`You lose! ${computerSelection} beats ${playerSelection}!`);
+    if (playerSelection === "rock" && computerSelection === "paper" ||
+        playerSelection === "paper" && computerSelection === "scissors" ||
+        playerSelection === "scissors" && computerSelection === "rock") {
+        document.getElementById("result").textContent=`You lose! ${computerSelection} beats ${playerSelection}!`;
+        computerPoints++;
     }
-
-    document.getElementById("score").textContent=totalPoints;
+    if(playerPoints === 5){
+        document.getElementById("score").textContent=`You win by ${playerPoints}:${computerPoints}!`;
+    }else if(computerPoints === 5){
+        document.getElementById("score").textContent=`You lose by ${playerPoints}:${computerPoints}!`;
+    }
 }
 
+//these functions are no longer necessary
+/*
 function captalize(inputString) {
     captalizedLetter = inputString[0].toUpperCase();
     return captalizedLetter + inputString.slice(1);
@@ -56,20 +64,20 @@ function game() {
     }
 
 }
-//game();
+game();
+*/
 
 //this part is for events
 
 //get player's buttons
 
 //get all buttons
-const allButtons = Array.from(document.getElementsByTagName("button"));
+const allButtons = Array.from(document.getElementsByClassName("player-button"));
 
-const rockButton = document.querySelector(".rock");
-const paperButton = document.querySelector(".paper");
-const scissorsButton = document.querySelector(".scissors");
-//allButtons.addEventListener("click", (e) => console.log(e.target.textContent));
+const rockButton = document.getElementById("rock");
+const paperButton = document.getElementById("paper");
+const scissorsButton = document.getElementById("scissors");
 
-allButtons.forEach(element => {
-    element.addEventListener("click", (e) => playRound(e.target.textContent, computerPlay()));
-})
+allButtons.forEach( button => (
+    button.addEventListener("click", (e) => playRound(e.target.value, computerPlay()))
+));
