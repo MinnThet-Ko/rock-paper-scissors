@@ -12,7 +12,11 @@ function computerPlay() {
     return resultList[Math.floor(Math.random() * 3)];
 }
 
-
+//function for reset
+function reset(){
+    playerPoints = 0;
+    computerPoints = 0;
+}
 //the fuction to decide who is the winner in a round
 function playRound(playerSelection, computerSelection) {
     
@@ -36,9 +40,12 @@ function playRound(playerSelection, computerSelection) {
         document.getElementById("result").textContent=`You lose! ${computerSelection} beats ${playerSelection}!`;
         computerPoints++;
     }
-    if(playerPoints === 5){
+    if(playerPoints === 5 && computerPoints === 5){
+        document.getElementById("score").textContent=`It's a tie by ${playerPoints}:${computerPoints}!`;
+        reset()
+    }else if(playerPoints == 5 && computerPoints < 5 ){
         document.getElementById("score").textContent=`You win by ${playerPoints}:${computerPoints}!`;
-    }else if(computerPoints === 5){
+    }else if(computerPoints ==  5 && playerPoints < 5){
         document.getElementById("score").textContent=`You lose by ${playerPoints}:${computerPoints}!`;
     }
 }
@@ -68,15 +75,8 @@ game();
 */
 
 //this part is for events
-
-//get player's buttons
-
-//get all buttons
+//fuction to change color on click
 const allButtons = Array.from(document.getElementsByClassName("player-button"));
-
-const rockButton = document.getElementById("rock");
-const paperButton = document.getElementById("paper");
-const scissorsButton = document.getElementById("scissors");
 
 allButtons.forEach( button => (
     button.addEventListener("click", (e) => playRound(e.target.value, computerPlay()))

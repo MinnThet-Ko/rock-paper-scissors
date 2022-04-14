@@ -40,3 +40,10 @@ input {
     font-weight: bold;
 }
 
+.player-select {
+    border: 2px solid blue;
+}
+
+.computer-select {
+    border: 2px solid red;
+}
