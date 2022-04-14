@@ -3,61 +3,18 @@
     <head>
         <title>Rock-Paper-Scissors</title>
         <meta charset="utf-8"/>
-        <script>
-             function computerPlay(){
-                let resultList = ["Rock","Paper","Scissors"];
-                
-                //return a random value from the list
-                return resultList[Math.floor(Math.random()*3)];
-             }
-
-             function playRound(playerSelection, computerSelection, totalPoints){
-
-                //If the selections are the same
-                if(playerSelection === computerSelection){
-                    alert("It is a draw!");
-                }
-
-                //If the player's selection wins
-                if(playerSelection === "Rock" && computerSelection === "Scissors" ||
-                    playerSelection === "Paper" && computerSelection === "Rock" ||
-                    playerSelection === "Scissors" && computerSelection === "Paper"){
-                        alert(`You win! ${playerSelection} beats ${computerSelection}!`);
-                        totalPoints++;
-                } 
-
-                //If the computer's selection wins
-                if(playerSelection === "Rock" && computerSelection === "Paper" ||
-                    playerSelection === "Paper" && computerSelection === "Scissors" ||
-                    playerSelection === "Scissors" && computerSelection === "Rock"){
-                        alert(`You lose! ${computerSelection} beats ${playerSelection}!`);
-                }
-                return totalPoints;
-             }
-
-             function captalize(inputString){
-                 captalizedLetter = inputString[0].toUpperCase();
-                 return captalizedLetter+inputString.slice(1);
-             }
-
-             function game(){
-                 let totalPoints = 0
-                 for(let i=0;i<5;i++){
-                    playerSelection = captalize(prompt("Choose rock, paper or scissors.").toLowerCase());
-                    computerSelection = computerPlay();
-                    totalPoints = playRound(playerSelection, computerSelection, totalPoints);
-                 }
-                 if(totalPoints == 1){
-                    alert(`You got ${totalPoints} point.`);
-                 }else {
-                    alert(`You got ${totalPoints} points.`);
-                 }
-                 
-             }
-             game();
+        <script src="./logic-and-events.js" defer>
+             
         </script>
     </head>
     <body>
+        <div id="player-button-container">
+            <button class="rock">Rock</button>
+            <button class="paper">Paper</button>
+            <button class="scissors">Scissors</button>
+        </div>
 
+        <div id="result"></div>
+        <div id="score"></div>
     </body>
 </html>
